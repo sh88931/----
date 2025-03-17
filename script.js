@@ -35,16 +35,13 @@ const stages = [
 
 let currentStage = 0;
 
-// تحميل المرحلة الأولى
 function loadStage(stage) {
     document.getElementById("mission-box").textContent = 🎯 ${stage.text};
 
-    // مسح المشهد القديم
     while (scene.children.length > 0) {
         scene.remove(scene.children[0]);
     }
 
-    // تحميل الخيارات
     loadModel(stage.correct, [-2, 0, 3], 0.5, "correct");
     loadModel(stage.wrong, [2, 0, 3], 0.5, "wrong");
 }
@@ -71,7 +68,6 @@ window.addEventListener("click", function(event) {
     }
 });
 
-// زر الانتقال إلى المرحلة التالية
 document.getElementById("next-button").addEventListener("click", function() {
     currentStage++;
     if (currentStage < stages.length) {
@@ -93,7 +89,6 @@ function updateCoins(amount) {
     document.getElementById("coin-count").textContent = coinCount;
 }
 
-// تشغيل المرحلة الأولى
 loadStage(stages[currentStage]);
 
 function animate() {
